@@ -1,8 +1,13 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "janken.html"));
+});
 
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
@@ -37,30 +42,48 @@ app.get("/omikuji2", (req, res) => {
 });
 
 app.get("/janken", (req, res) => {
-  let hand = req.query.hand;
-  let win = Number( req.query.win );
-  let total = Number( req.query.total );
-  console.log( {hand, win, total});
-  const num = Math.floor( Math.random() * 3 + 1 );
-  let cpu = '';
-  let judgement = '';
-  if( num==1 ) cpu = 'グー';
-  else if( num==2 ) cpu = 'チョキ';
-  else cpu = 'パー';
-  // ここに勝敗の判定を入れる
-  // 以下の数行は人間の勝ちの場合の処理なので，
-  // 判定に沿ってあいこと負けの処理を追加する
-  judgement = '勝ち';
-  win += 1;
-  total += 1;
-  const display = {
-    your: hand,
-    cpu: cpu,
-    judgement: judgement,
-    win: win,
-    total: total
+  const hand = req.query.radio; // "1", "2", "3"
+  let win = parseInt(req.query.win, 10);
+  let total = parseInt(req.query.total, 10);
+
+  // --- NaNのときは0で初期化 ---
+  if (isNaN(win)) win = 0;
+  if (isNaN(total)) total = 0;
+
+  console.log("受信データ:", { hand, win, total });
+
+  // --- 自分の手 ---
+  let your = "未選択";
+  if (hand === "1") your = "グー";
+  else if (hand === "2") your = "チョキ";
+  else if (hand === "3") your = "パー";
+
+  // --- コンピュータの手 ---
+  const cpu_num = Math.floor(Math.random() * 3) + 1;
+  const cpu = ["グー", "チョキ", "パー"][cpu_num - 1];
+
+  // --- 勝敗判定 ---
+  let judgement = "";
+  if (!hand) {
+    judgement = "手が選ばれていません";
+  } else {
+    const hnum = parseInt(hand, 10);
+    if (hnum === cpu_num) {
+      judgement = "引き分け";
+    } else if (
+      (hnum === 1 && cpu_num === 2) ||
+      (hnum === 2 && cpu_num === 3) ||
+      (hnum === 3 && cpu_num === 1)
+    ) {
+      judgement = "勝ち";
+      win++;
+    } else {
+      judgement = "負け";
+    }
+    total++;
   }
-  res.render( 'janken', display );
+
+  res.render("janken", { your, cpu, judgement, win, total });
 });
 
-app.listen(8080, () => console.log("Example app listening on port 8080!"));
+app.listen(8080, () => console.log("✅ Server started on http://localhost:8080"));
