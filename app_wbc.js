@@ -59,13 +59,12 @@ app.post("/wbc/update/:number", (req, res) => {
     res.redirect('/wbc');
 });
 
-// 削除
+
 app.get("/wbc/delete_confirm/:number", (req, res) => {
     const number = req.params.number;
     res.render('wbc_delete', { id: number, data: wbcData[number] });
 });
 
-// 削除 (処理) - GETメソッド
 app.get("/wbc/delete/:number", (req, res) => {
     const number = req.params.number;
     wbcData.splice(number, 1);

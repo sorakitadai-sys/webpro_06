@@ -6,7 +6,6 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
-// データ定義 (code削除)
 let hinata = [
   { id:1, title:"キュン", release:"2019-3-27", center:"小坂菜緒", Commoncoupling:"JOYFUL LOVE"},
   { id:2, title:"ドレミソラシド", release:"2019-7-17", center:"小坂菜緒", Commoncoupling:"キツネ"},
@@ -63,13 +62,16 @@ app.get("/hinata/edit/:number", (req, res) => {
     res.render('hinata_edit', { id: number, data: hinata[number] });
 });
 
-app.post("/hinata/update/:number", (req, res) => {
-    const number = req.params.number;
-    // code削除
-    hinata[number].title = req.body.title;
-    hinata[number].release = req.body.release;
-    hinata[number].center = req.body.center;
-    hinata[number].Commoncoupling = req.body.Commoncoupling;
+app.post("/hinata", (req, res) => {
+    const newId = hinata.length + 1;
+
+    hinata.push({
+        id: newId,
+        title: req.body.title,
+        release: req.body.release,
+        center: req.body.center,
+        Commoncoupling: req.body.Commoncoupling
+    });
     res.redirect('/hinata');
 });
 

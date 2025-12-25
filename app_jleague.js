@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
-// データ定義 (codeを削除)
+
 let original10 = [
   { id:1, name:"鹿島アントラーズ", hometown:"茨城県鹿島郡鹿島町ほか", stadium:"茨城県立カシマサッカースタジアム", Championshiphistory:9},
   { id:2, name:"ジェフユナイテッド市原", hometown:"千葉県市原市", stadium:"フクダ電子アリーナ", Championshiphistory:0},
