@@ -2,7 +2,7 @@
 <html>
 <head><title>編集</title></head>
 <body>
-    <h1><%= data.title %>の編集</h1>
+    <h1><%= data.title %> の編集</h1>
     <form action="/hinata/update/<%= id %>" method="POST">
         <div><label>タイトル:</label><input type="text" name="title" value="<%= data.title %>" required></div>
         <div><label>発売日:</label><input type="text" name="release" value="<%= data.release %>" required></div>

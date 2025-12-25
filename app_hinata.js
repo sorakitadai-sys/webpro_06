@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
-// データ定義 (code削除)
+
 let hinata = [
   { id:1, title:"キュン", release:"2019-3-27", center:"小坂菜緒", Commoncoupling:"JOYFUL LOVE"},
   { id:2, title:"ドレミソラシド", release:"2019-7-17", center:"小坂菜緒", Commoncoupling:"キツネ"},
@@ -25,21 +25,21 @@ let hinata = [
   { id:15, title:"お願いバッハ!", release:"2025-9-17", center:"小坂菜緒・金村美玖", Commoncoupling:"空飛ぶ車"},
 ];
 
-// ルーティング
+
 app.get("/", (req, res) => res.redirect("/hinata"));
 
-// 一覧
+
 app.get("/hinata", (req, res) => {
     res.render('hinata_list', { data: hinata });
 });
 
-// 詳細
+
 app.get("/hinata/:number", (req, res) => {
     const number = req.params.number;
     res.render('hinata_detail', { id: number, data: hinata[number] });
 });
 
-// 新規登録
+
 app.get("/hinata_create", (req, res) => {
     res.render('hinata_add');
 });
@@ -48,7 +48,7 @@ app.post("/hinata", (req, res) => {
     const maxId = hinata.reduce((max, item) => item.id > max ? item.id : max, 0);
     hinata.push({
         id: maxId + 1,
-        // code削除
+
         title: req.body.title,
         release: req.body.release,
         center: req.body.center,
@@ -57,7 +57,7 @@ app.post("/hinata", (req, res) => {
     res.redirect('/hinata');
 });
 
-// 編集
+
 app.get("/hinata/edit/:number", (req, res) => {
     const number = req.params.number;
     res.render('hinata_edit', { id: number, data: hinata[number] });
@@ -76,13 +76,13 @@ app.post("/hinata", (req, res) => {
     res.redirect('/hinata');
 });
 
-// 削除 (確認)
+
 app.get("/hinata/delete_confirm/:number", (req, res) => {
     const number = req.params.number;
     res.render('hinata_delete', { id: number, data: hinata[number] });
 });
 
-// 削除 (処理) - GETメソッド
+
 app.get("/hinata/delete/:number", (req, res) => {
     const number = req.params.number;
     hinata.splice(number, 1);

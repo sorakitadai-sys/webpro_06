@@ -6,7 +6,7 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
-// データ定義 (codeを削除)
+
 let original10 = [
   { id:1, name:"鹿島アントラーズ", hometown:"茨城県鹿島郡鹿島町ほか", stadium:"茨城県立カシマサッカースタジアム", Championshiphistory:9},
   { id:2, name:"ジェフユナイテッド市原", hometown:"千葉県市原市", stadium:"フクダ電子アリーナ", Championshiphistory:0},
@@ -20,22 +20,22 @@ let original10 = [
   { id:10, name:"サンフレッチェ広島", hometown:"広島県広島市", stadium:"エディオンスタジアム広島", Championshiphistory:3},
 ];
 
-// ルーティング
+
 app.get("/", (req, res) => res.redirect("/original10"));
 
-// 一覧
+
 app.get("/original10", (req, res) => {
     res.render('original10_list', { data: original10 });
 });
 
-// 詳細
+
 app.get("/original10/:number", (req, res) => {
     const number = req.params.number;
     const detail = original10[number];
     res.render('original10_detail', { id: number, data: detail });
 });
 
-// 新規登録 (表示)
+
 app.get("/original10_create", (req, res) => {
     res.render('original10_add');
 });
@@ -53,17 +53,17 @@ app.post("/original10", (req, res) => {
     res.redirect('/original10');
 });
 
-// 編集 (表示)
+
 app.get("/original10/edit/:number", (req, res) => {
     const number = req.params.number;
     const detail = original10[number];
     res.render('original10_edit', { id: number, data: detail });
 });
 
-// 編集 (処理)
+
 app.post("/original10/update/:number", (req, res) => {
     const number = req.params.number;
-    // codeを削除
+
     original10[number].name = req.body.name;
     original10[number].hometown = req.body.hometown;
     original10[number].stadium = req.body.stadium;
@@ -71,14 +71,14 @@ app.post("/original10/update/:number", (req, res) => {
     res.redirect('/original10');
 });
 
-// 削除 (確認)
+
 app.get("/original10/delete_confirm/:number", (req, res) => {
     const number = req.params.number;
     const detail = original10[number];
     res.render('original10_delete', { id: number, data: detail });
 });
 
-// 削除 (処理) - スライドに合わせてGETメソッド
+
 app.get("/original10/delete/:number", (req, res) => {
     const number = req.params.number;
     original10.splice(number, 1);
