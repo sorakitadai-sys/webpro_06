@@ -2,7 +2,7 @@
 <html>
 <head><title>編集</title></head>
 <body>
-    <h1><%= data.year %>年大会 の編集</h1>
+    <h1><%= data.year %>年大会の編集</h1>
     <form action="/wbc/update/<%= id %>" method="POST">
         <div><label>開催年:</label><input type="number" name="year" value="<%= data.year %>" required></div>
         <div><label>大会名:</label><input type="text" name="edition" value="<%= data.edition %>" required></div>
