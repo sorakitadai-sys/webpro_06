@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title><%= data.name %></title></head>
+<body>
+    <h1><%= data.name %> の詳細</h1>
+    <ul>
+        <li>チーム名: <%= data.name %></li>
+        <li>ホームタウン: <%= data.hometown %></li>
+        <li>スタジアム: <%= data.stadium %></li>
+        <li>Jリーグ優勝回数: <%= data.Championshiphistory %></li>
+    </ul>
+
+    <a href="/original10/edit/<%= id %>">編集</a>
+    <a href="/original10/delete_confirm/<%= id %>">削除</a>
+    <br><br>
+    <a href="/original10">一覧に戻る</a>
+</body>
+</html>

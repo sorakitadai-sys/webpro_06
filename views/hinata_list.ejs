@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>日向坂46 Singles</title></head>
+<body>
+    <h1>日向坂46 Singles</h1>
+    <a href="/hinata_create">新規登録</a>
+    <table>
+        <tr><th>タイトル</th></tr>
+        <% let number = 0; %>
+        <% for(let row of data) { %>
+            <tr>
+                <td><a href="/hinata/<%= number %>"><%= row.title %></a></td>
+            </tr>
+            <% number++; %>
+        <% } %>
+    </table>
+</body>
+</html>

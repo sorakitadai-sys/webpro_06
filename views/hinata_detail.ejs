@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title><%= data.title %></title></head>
+<body>
+    <h1><%= data.title %> の詳細</h1>
+    <ul>
+        <li>タイトル: <%= data.title %></li>
+        <li>発売日: <%= data.release %></li>
+        <li>センター: <%= data.center %></li>
+        <li>共通カップリング: <%= data.Commoncoupling %></li>
+    </ul>
+    <a href="/hinata/edit/<%= id %>">編集</a>
+    <a href="/hinata/delete_confirm/<%= id %>">削除</a>
+    <br><br>
+    <a href="/hinata">一覧に戻る</a>
+</body>
+</html>

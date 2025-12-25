@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>大会追加</title></head>
+<body>
+    <h1>大会データの追加</h1>
+    <form action="/wbc" method="POST">
+        <div><label>開催年:</label><input type="number" name="year" required></div>
+        <div><label>大会名:</label><input type="text" name="edition" required></div>
+        <div><label>優勝国:</label><input type="text" name="champion" required></div>
+        <div><label>MVP選手:</label><input type="text" name="mvp_player" required></div>
+        <button type="submit">登録</button>
+    </form>
+    <a href="/wbc">キャンセル</a>
+</body>
+</html>

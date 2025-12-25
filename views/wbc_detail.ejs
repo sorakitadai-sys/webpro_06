@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title><%= data.year %>年大会</title></head>
+<body>
+    <h1><%= data.year %>大会 の詳細</h1>
+    <ul>
+        <li>開催年: <%= data.year %>年</li>
+        <li>大会: <%= data.edition %></li>
+        <li>優勝国: <%= data.champion %></li>
+        <li>MVP選手: <%= data.mvp_player %></li>
+    </ul>
+    <a href="/wbc/edit/<%= id %>">編集</a>
+    <a href="/wbc/delete_confirm/<%= id %>">削除</a>
+    <br><br>
+    <a href="/wbc">一覧に戻る</a>
+</body>
+</html>

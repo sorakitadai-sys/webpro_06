@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>編集</title></head>
+<body>
+    <h1><%= data.name %> の編集</h1>
+    <form action="/original10/update/<%= id %>" method="POST">
+        <div><label>クラブ名:</label><input type="text" name="name" value="<%= data.name %>" required></div>
+        <div><label>ホームタウン:</label><input type="text" name="hometown" value="<%= data.hometown %>" required></div>
+        <div><label>スタジアム:</label><input type="text" name="stadium" value="<%= data.stadium %>" required></div>
+        <div><label>優勝回数:</label><input type="number" name="Championshiphistory" value="<%= data.Championshiphistory %>"></div>
+        <button type="submit">更新</button>
+    </form>
+    <a href="/original10/<%= id %>">キャンセル</a>
+</body>
+</html>
