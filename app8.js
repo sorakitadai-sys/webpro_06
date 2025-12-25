@@ -8,47 +8,6 @@ app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
 
-let original10 = [
-  { id:1, code:"01", name:"鹿島アントラーズ", hometown:"茨城県鹿島郡鹿島町ほか", stadium:"茨城県立カシマサッカースタジアム", Championshiphistory:9},
-  { id:2, code:"02", name:"ジェフユナイテッド市原", hometown:"千葉県市原市", stadium:"フクダ電子アリーナ", Championshiphistory:0},
-  { id:3, code:"03", name:"浦和レッズダイヤモンド", hometown:"埼玉県浦和市", stadium:"埼玉スタジアム", Championshiphistory:1},
-  { id:4, code:"04", name:"ヴェルディ川崎", hometown:"神奈川県川崎市", stadium:"等々力陸上競技場", Championshiphistory:2},
-  { id:5, code:"05", name:"横浜マリノス", hometown:"神奈川県横浜市", stadium:"日産スタジアム", Championshiphistory:5},
-  { id:6, code:"06", name:"横浜フリューゲルス", hometown:"神奈川県横浜市", stadium:"三ツ沢公園球技場", Championshiphistory:0},
-  { id:7, code:"07", name:"清水エスパルス", hometown:"静岡県清水市", stadium:"三ツ沢球技場", Championshiphistory:0},
-  { id:8, code:"08", name:"名古屋グランパスエイト", hometown:"愛知県名古屋市", stadium:"豊田スタジアム", Championshiphistory:1},
-  { id:9, code:"09", name:"ガンバ大阪", hometown:"大阪府吹田市", stadium:"市立吹田サッカースタジアム", Championshiphistory:2},
-  { id:10, code:"10", name:"サンフレッチェ広島", hometown:"広島県広島市", stadium:"エディオンスタジアム広島", Championshiphistory:3},
-  
-];
-
-let hinata = [
-  { id:1, code:"01", title:"キュン", release:"2019-3-27", center:"小坂菜緒", Commoncoupling:"JOYFUL LOVE"},
-  { id:2, code:"02", title:"ドレミソラシド", release:"2019-7-17", center:"小坂菜緒", Commoncoupling:"キツネ"},
-  { id:3, code:"03", title:"こんなに好きになっちゃっていいの？", release:"2019-10-2", center:"小坂菜緒", Commoncoupling:"ホントの時間"},
-  { id:4, code:"04", title:"ソンナコトナイヨ", release:"2020-2-19", center:"小坂菜緒", Commoncoupling:"青春の馬"},
-  { id:5, code:"05", title:"君しか勝たん", release:"2021-5-26", center:"加藤史帆", Commoncoupling:"声の足跡"},
-  { id:6, code:"06", title:"ってか", release:"2021-10-27", center:"金村美玖", Commoncoupling:"アディショナルタイム"},
-  { id:7, code:"07", title:"僕なんか", release:"2022-6-1", center:"小坂菜緒", Commoncoupling:"飛行機雲ができる理由"},
-  { id:8, code:"08", title:"月と星が踊るMidnight", release:"2019-10-26", center:"齊藤京子", Commoncoupling:"HEY!OHISAMA!"},
-  { id:9, code:"09", title:"One choice", release:"2023-4-19", center:"丹生明里", Commoncoupling:"恋は逃げ足が早い"},
-  { id:10, code:"10", title:"Am I ready?", release:"2023-7-26", center:"上村ひなの", Commoncoupling:"見たことない魔物"},
-  { id:11, code:"11", title:"君はハニーデュー", release:"2024-5-8", center:"正源司陽子", Commoncoupling:"錆つかない剣を持て！"},
-  { id:12, code:"12", title:"絶対的第六感", release:"2024-9-18", center:"正源司陽子・藤嶌果歩", Commoncoupling:"君を覚えてない"},
-  { id:13, code:"13", title:"卒業写真だけが知ってる", release:"2025-1-29", center:"小坂菜緒", Commoncoupling:"SUZUKA"},
-  { id:14, code:"14", title:"Love yourself!", release:"2025-5-21", center:"小坂菜緒", Commoncoupling:"ジャーマンアイリス"},
-  { id:15, code:"15", title:"お願いバッハ!", release:"2025-9-17", center:"小坂菜緒・金村美玖", Commoncoupling:"空飛ぶ車"},
-]
-
-let wbcData = [
-    { year: 2006, edition: '第1回', champion: '日本', mvp_player: '松坂大輔' },
-    { year: 2009, edition: '第2回', champion: '日本', mvp_player: '松坂大輔' },
-    { year: 2013, edition: '第3回', champion: 'ドミニカ共和国', mvp_player: 'ロビンソン・カノ' },
-    { year: 2017, edition: '第4回', champion: 'アメリカ合衆国', mvp_player: 'マーカス・ストローマン' },
-    { year: 2023, edition: '第5回', champion: '日本', mvp_player: '大谷翔平' }
-];
-
-
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
   const message2 = "Bon jour";
