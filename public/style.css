@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-/* 全体の余白を少し空ける */
 body {
     margin: 20px;
 }
@@ -9,17 +8,14 @@ body.jleague h1 {
     color: red;
 }
 
-/* bodyタグに "hinata" クラスがある時の h1 の色 */
 body.hinata h1 {
     color: #7cc7e8;
 }
 
-/* bodyタグに "wbc" クラスがある時の h1 の色 */
 body.wbc h1 {
     color: #002b5c;
 }
 
-/* テーブルに枠線をつける */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -30,12 +26,11 @@ th, td {
     padding: 5px;
 }
 
-/* テーブルのヘッダーに色をつける */
 th {
     background-color: #cccccc;
 }
 
-/* フォームのパーツ同士がくっつかないようにする */
+
 div {
     margin-bottom: 10px;
 }
