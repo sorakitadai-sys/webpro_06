@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head><title>編集</title></head>
-<body>
+<head>
+    <title>編集</title>
+    <link rel="stylesheet" href="/public/style.css">
+</head>
+<body class="jleague">
     <h1><%= data.name %> の編集</h1>
     <form action="/original10/update/<%= id %>" method="POST">
         <div><label>クラブ名:</label><input type="text" name="name" value="<%= data.name %>" required></div>
