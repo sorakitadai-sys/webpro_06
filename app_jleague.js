@@ -36,7 +36,7 @@ app.get("/original10/:number", (req, res) => {
 });
 
 
-app.get("/original10_create", (req, res) => {
+app.get("/original10/create", (req, res) => {
     res.render('original10_add');
 });
 

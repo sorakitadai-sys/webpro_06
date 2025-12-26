@@ -27,7 +27,7 @@ app.get("/wbc/:number", (req, res) => {
     res.render('wbc_detail', { id: number, data: wbcData[number] });
 });
 
-app.get("/wbc_create", (req, res) => {
+app.get("/wbc/create", (req, res) => {
     res.render('wbc_add');
 });
 

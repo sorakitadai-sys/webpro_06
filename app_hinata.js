@@ -40,7 +40,7 @@ app.get("/hinata/:number", (req, res) => {
 });
 
 
-app.get("/hinata_create", (req, res) => {
+app.get("/hinata/create", (req, res) => {
     res.render('hinata_add');
 });
 
