@@ -8,21 +8,21 @@ app.use(express.urlencoded({ extended: true }));
 
 
 let hinata = [
-  { id:1, title:"キュン", release:"2019-3-27", center:"小坂菜緒", Commoncoupling:"JOYFUL LOVE"},
-  { id:2, title:"ドレミソラシド", release:"2019-7-17", center:"小坂菜緒", Commoncoupling:"キツネ"},
-  { id:3, title:"こんなに好きになっちゃっていいの？", release:"2019-10-2", center:"小坂菜緒", Commoncoupling:"ホントの時間"},
-  { id:4, title:"ソンナコトナイヨ", release:"2020-2-19", center:"小坂菜緒", Commoncoupling:"青春の馬"},
-  { id:5, title:"君しか勝たん", release:"2021-5-26", center:"加藤史帆", Commoncoupling:"声の足跡"},
-  { id:6, title:"ってか", release:"2021-10-27", center:"金村美玖", Commoncoupling:"アディショナルタイム"},
-  { id:7, title:"僕なんか", release:"2022-6-1", center:"小坂菜緒", Commoncoupling:"飛行機雲ができる理由"},
-  { id:8, title:"月と星が踊るMidnight", release:"2019-10-26", center:"齊藤京子", Commoncoupling:"HEY!OHISAMA!"},
-  { id:9, title:"One choice", release:"2023-4-19", center:"丹生明里", Commoncoupling:"恋は逃げ足が早い"},
-  { id:10, title:"Am I ready?", release:"2023-7-26", center:"上村ひなの", Commoncoupling:"見たことない魔物"},
-  { id:11, title:"君はハニーデュー", release:"2024-5-8", center:"正源司陽子", Commoncoupling:"錆つかない剣を持て！"},
-  { id:12, title:"絶対的第六感", release:"2024-9-18", center:"正源司陽子・藤嶌果歩", Commoncoupling:"君を覚えてない"},
-  { id:13, title:"卒業写真だけが知ってる", release:"2025-1-29", center:"小坂菜緒", Commoncoupling:"SUZUKA"},
-  { id:14, title:"Love yourself!", release:"2025-5-21", center:"小坂菜緒", Commoncoupling:"ジャーマンアイリス"},
-  { id:15, title:"お願いバッハ!", release:"2025-9-17", center:"小坂菜緒・金村美玖", Commoncoupling:"空飛ぶ車"},
+  { title:"キュン", release:"2019-3-27", center:"小坂菜緒", Commoncoupling:"JOYFUL LOVE"},
+  { title:"ドレミソラシド", release:"2019-7-17", center:"小坂菜緒", Commoncoupling:"キツネ"},
+  { title:"こんなに好きになっちゃっていいの？", release:"2019-10-2", center:"小坂菜緒", Commoncoupling:"ホントの時間"},
+  { title:"ソンナコトナイヨ", release:"2020-2-19", center:"小坂菜緒", Commoncoupling:"青春の馬"},
+  { title:"君しか勝たん", release:"2021-5-26", center:"加藤史帆", Commoncoupling:"声の足跡"},
+  { title:"ってか", release:"2021-10-27", center:"金村美玖", Commoncoupling:"アディショナルタイム"},
+  { title:"僕なんか", release:"2022-6-1", center:"小坂菜緒", Commoncoupling:"飛行機雲ができる理由"},
+  { title:"月と星が踊るMidnight", release:"2019-10-26", center:"齊藤京子", Commoncoupling:"HEY!OHISAMA!"},
+  { title:"One choice", release:"2023-4-19", center:"丹生明里", Commoncoupling:"恋は逃げ足が早い"},
+  { title:"Am I ready?", release:"2023-7-26", center:"上村ひなの", Commoncoupling:"見たことない魔物"},
+  { title:"君はハニーデュー", release:"2024-5-8", center:"正源司陽子", Commoncoupling:"錆つかない剣を持て！"},
+  { title:"絶対的第六感", release:"2024-9-18", center:"正源司陽子・藤嶌果歩", Commoncoupling:"君を覚えてない"},
+  { title:"卒業写真だけが知ってる", release:"2025-1-29", center:"小坂菜緒", Commoncoupling:"SUZUKA"},
+  { title:"Love yourself!", release:"2025-5-21", center:"小坂菜緒", Commoncoupling:"ジャーマンアイリス"},
+  { title:"お願いバッハ!", release:"2025-9-17", center:"小坂菜緒・金村美玖", Commoncoupling:"空飛ぶ車"},
 ];
 
 
@@ -40,15 +40,13 @@ app.get("/hinata/:number", (req, res) => {
 });
 
 
-app.get("/hinata/create", (req, res) => {
+app.get("/hinata_create", (req, res) => {
     res.render('hinata_add');
 });
 
 app.post("/hinata", (req, res) => {
-    const maxId = hinata.reduce((max, item) => item.id > max ? item.id : max, 0);
-    hinata.push({
-        id: maxId + 1,
 
+    hinata.push({
         title: req.body.title,
         release: req.body.release,
         center: req.body.center,
