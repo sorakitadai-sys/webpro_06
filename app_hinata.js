@@ -36,7 +36,8 @@ app.get("/hinata", (req, res) => {
 
 app.get("/hinata/:number", (req, res) => {
     const number = req.params.number;
-    res.render('hinata_detail', { id: number, data: hinata[number] });
+    const detail = hinata[number];
+    res.render('hinata_detail', { id: number, data: detail });
 });
 
 
@@ -58,26 +59,27 @@ app.post("/hinata", (req, res) => {
 
 app.get("/hinata/edit/:number", (req, res) => {
     const number = req.params.number;
-    res.render('hinata_edit', { id: number, data: hinata[number] });
+    const detail = hinata[number];
+    res.render('hinata_edit', { id: number, data: detail });
 });
 
-app.post("/hinata", (req, res) => {
-    const newId = hinata.length + 1;
+app.post("/hinata/update/:number", (req, res) => {
+    const number = req.params.number;
 
-    hinata.push({
-        id: newId,
+    hinata[number] = {
         title: req.body.title,
         release: req.body.release,
         center: req.body.center,
         Commoncoupling: req.body.Commoncoupling
-    });
+    };
     res.redirect('/hinata');
 });
 
 
 app.get("/hinata/delete_confirm/:number", (req, res) => {
     const number = req.params.number;
-    res.render('hinata_delete', { id: number, data: hinata[number] });
+    const detail = hinata[number];
+    res.render('hinata_delete', { id: number, data: detail });
 });
 
 

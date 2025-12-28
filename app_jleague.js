@@ -62,10 +62,12 @@ app.get("/original10/edit/:number", (req, res) => {
 app.post("/original10/update/:number", (req, res) => {
     const number = req.params.number;
 
-    original10[number].name = req.body.name;
-    original10[number].hometown = req.body.hometown;
-    original10[number].stadium = req.body.stadium;
-    original10[number].Championshiphistory = Number(req.body.Championshiphistory);
+    original10[number] = {
+        name: req.body.name,
+        hometown: req.body.hometown,
+        stadium: req.body.stadium,
+        Championshiphistory: Number(req.body.Championshiphistory)
+    };
     res.redirect('/original10');
 });
 

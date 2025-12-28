@@ -24,7 +24,8 @@ app.get("/wbc", (req, res) => {
 
 app.get("/wbc/:number", (req, res) => {
     const number = req.params.number;
-    res.render('wbc_detail', { id: number, data: wbc[number] });
+    const detail = wbc[number];
+    res.render('wbc_detail', { id: number, data: detail });
 });
 
 app.get("/wbc_create", (req, res) => {
@@ -44,22 +45,27 @@ app.post("/wbc", (req, res) => {
 
 app.get("/wbc/edit/:number", (req, res) => {
     const number = req.params.number;
-    res.render('wbc_edit', { id: number, data: wbc[number] });
+    const detail = wbc[number];
+    res.render('wbc_edit', { id: number, data: detail });
 });
 
 app.post("/wbc/update/:number", (req, res) => {
     const number = req.params.number;
-    wbc[number].year = Number(req.body.year);
-    wbc[number].edition = req.body.edition;
-    wbc[number].champion = req.body.champion;
-    wbc[number].mvp_player = req.body.mvp_player;
+
+    wbc[number] = {
+        year: Number(req.body.year),
+        edition: req.body.edition,
+        champion: req.body.champion,
+        mvp_player: req.body.mvp_player
+    };
     res.redirect('/wbc');
 });
 
 
 app.get("/wbc/delete_confirm/:number", (req, res) => {
     const number = req.params.number;
-    res.render('wbc_delete', { id: number, data: wbc[number] });
+    const detail = wbc[number];
+    res.render('wbc_delete', { id: number, data: detail });
 });
 
 
